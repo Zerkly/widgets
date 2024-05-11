@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
+    <title>Countdown to Next Year</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            text-align: center;
+            font-family: monospace;
+            background-color: #13131300;
+        }
+        .box {
+            display: inline-block;
+            padding: 10px;
+            min-width: 40px;
+            height: 40px;
+            border: 3px solid #000000;
+            background-color: #292929;
+            border-radius: 10px;
+            box-shadow: 2px 2px 1px 0px #000000;
+            transition: transform .25s ease-in-out; /* Reduced transition duration for smoother effect */
+            color: #fff; /* Set text color to white */
+        }
+
+        .box:hover {
+           transform: scale(1.1);
+            border-color: #414141;
+            background-color: #414141;
+            box-shadow: 2px 2px 90px 30px #000000;
+            text-shadow: 0 0 10px #ffffff; /* Horizontal offset, vertical offset, blur radius, and color */
+        }
+
+
+        h2{
+            display: inline-block;
+            margin-right: 10px;
+            margin-block-start: 5px;
+            color: #fff;
+        }
+        h3{
+            text-align: left;
+            display: inline-block;
+            color: white;
+            font-weight: bold;
+        }
+        .small{
+            font-size: 15px;
+            font-weight: lighter;
+        }
+        .container{
+            border-radius: 25px;
+            background-color: #131313;
+            overflow: hidden;
+            height: auto;
+            
+        }
+        .embedContainer {
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: fit-content;
+            gap: 4%;
+            justify-content: center; /* Center vertically */
+            text-align: center; /* Center horizontally */
+        }
+        .EmbedLeft{
+            min-width: 22.5%;
+            max-width: 22.5%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .EmbedMiddle {
+            min-width: 50%;
+            max-width: 50%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform .25s ease-in-out;
+            
+        }
+        .EmbedRight{
+            min-width: 22.5%;
+            max-width: 22.5%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .pt{
+            padding-top: 5%;
+        }
+        .wrapper{
+            width: 75%;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .containerTwo{
+            height: 400px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: start;
+        }
+        .card{
+            width: 80px;
+            border-radius: .75rem;
+            background-size: cover;
+
+            
+            overflow: hidden;
+
+            
+            border-radius: 2rem;
+            margin: 0 10px;
+            display: flex;
+            align-items: flex-end;
+            transition: .6s cubic-bezier(.28,-0.03,0,.99);
+            box-shadow: 0px 10px 30px -5px #000000;
+        }
+
+        .card > .row {
+            color: white;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        .card > .row  > .icon {
+            background: #223;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px;
+            border-radius: 100%;
+            z-index: 10;
+        }
+        .card > .row > .description {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+            height: 80px;
+            width: 350px;
+            opacity: 0;
+            transform: translateY(px);
+            transition-delay: .3s;
+            transition: all .3s ease;
+        }
+        .description p {
+            color: #b0b0ba;
+        }
+        input {
+            display: none;
+        }
+        input:checked + label {
+            width: 600px;
+        }
+        input:checked .card{
+            scale: 1.1;
+        }
+        .sitback{
+         position: relative;
+         height: 108%;
+         min-width: 100%;
+         transform: translateY(32px) translateX(-502px);
+        }
+        .holder{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header><!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+             
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+              {
+              "symbols": [
+                {
+                  "proName": "FOREXCOM:SPXUSD",
+                  "title": "S&P 500 Index"
+                },
+                {
+                  "proName": "FOREXCOM:NSXUSD",
+                  "title": "US 100 Cash CFD"
+                },
+                {
+                  "description": "EUR to USD",
+                  "proName": "FOREXCOM:EURUSD"
+                },
+                {
+                  "description": "GBP to USD",
+                  "proName": "FOREXCOM:GBPUSD"
+                }
+              ],
+              "showSymbolLogo": true,
+              "isTransparent": true,
+              "displayMode": "regular",
+              "colorTheme": "dark",
+              "locale": "en"
+            }
+              </script>
+            </div>
+            <!-- TradingView Widget END --></header>
+
+    <h3 class="pt">
+            Countdown to Next Year
+    </h3>
+    <div id="counter">
+        <h2 class="box" id="months"></h2>
+        <h2 class="box" id="days"></h2>
+        <h2 class="box" id="hours"></h2>
+        <h2 class="box" id="minutes"></h2>
+        <h2 class="box" id="seconds"></h2>
+    </div>
+
+    <div class="holder pt">
+        <div class="container">Hi</div>
+
+        <div class="wrapper"> 
+            <div class="containerTwo">
+                <input type="radio" name="slide" id="c1" >
+                
+                    <label for="c1" class="card" >
+                        
+                        <div class="row">
+                            <div class="icon">1</div>
+                            <div class="description"></div>
+                            <h4>GBP/JPY</h4>
+                            <p>GBP TO JPY</p>
+                        </div>
+                        <div class="sitback"><!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container" style="height:100%;width:100%">
+                              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+                              <div class="tradingview-widget-copyright"></div>
+                              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                              {
+                              "autosize": true,
+                              "symbol": "FOREXCOM:EURUSD",
+                              "interval": "1",
+                              "timezone": "Etc/UTC",
+                              "theme": "dark",
+                              "style": "1",
+                              "locale": "en",
+                              "withdateranges": true,
+                              "hide_side_toolbar": false,
+                              "allow_symbol_change": true,
+                              "details": true,
+                              "hotlist": true,
+                              "calendar": false,
+                              "studies": [
+                                "STD;MACD"
+                              ],
+                              "support_host": "https://www.tradingview.com"
+                            }
+                              </script>
+                            </div>
+                            <!-- TradingView Widget END --></div>
+                    </label>
+                </input>
+    
+                <input type="radio" name="slide" id="c2" >
+                    <label for="c2" class="card">
+                        <div class="row">
+                            <div class="icon">2</div>
+                            <div class="description"></div>
+                            <h4>EUR/USD</h4>
+                            <p>EUR TO USD</p>
+                        </div>
+                        <div class="sitback"><!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container" style="height:100%;width:100%">
+                              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+                              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                              {
+                              "autosize": true,
+                              "symbol": "FOREXCOM:GBPJPY",
+                              "interval": "1",
+                              "timezone": "Etc/UTC",
+                              "theme": "dark",
+                              "style": "1",
+                              "locale": "en",
+                              "withdateranges": true,
+                              "hide_side_toolbar": false,
+                              "allow_symbol_change": true,
+                              "details": true,
+                              "hotlist": true,
+                              "calendar": false,
+                              "studies": [
+                                "STD;MACD"
+                              ],
+                              "support_host": "https://www.tradingview.com"
+                            }
+                              </script>
+                            </div>
+                            <!-- TradingView Widget END --></div>
+                    </label>
+                </input>
+    
+                <input type="radio" name="slide" id="c3" checked>
+                    <label for="c3" class="card">
+                        <div class="row">
+                            <div class="icon">3</div>
+                            <div class="description"></div>
+                            <h4>GBP/JPY</h4>
+                            <p>GBP TO JPY</p>
+                        </div>
+                        <div class="sitback"><!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                              <div class="tradingview-widget-container__widget"></div>
+                              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
+                              {
+                              "width": "100%",
+                              "height": "100%",
+                              "currencies": [
+                                "EUR",
+                                "USD",
+                                "JPY",
+                                "GBP",
+                                "CHF",
+                                "AUD",
+                                "CAD",
+                                "NZD",
+                                "CNY"
+                              ],
+                              "isTransparent": false,
+                              "colorTheme": "dark",
+                              "locale": "en",
+                              "backgroundColor": "#1D222D"
+                            }
+                              </script>
+                            </div>
+                            <!-- TradingView Widget END --></div>
+                    </label>
+                </input>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script>
+    function showCountdown() {
+        var monthsElement = document.getElementById("months");
+        var daysElement = document.getElementById("days");
+        var hoursElement = document.getElementById("hours");
+        var minutesElement = document.getElementById("minutes");
+        var secondsElement = document.getElementById("seconds");
+
+        var now = new Date();
+        var currentYear = now.getFullYear();
+        var nextYear = currentYear + 1;
+
+        var endOfYear = new Date(nextYear, 0, 1); // January 1st of the next year
+
+        var timeRemaining = endOfYear - now;
+        var months = Math.max(0, 11 - now.getMonth());
+        var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        monthsElement.innerHTML = months + "<br> <span class=\"small\"> months </span>";
+        daysElement.innerHTML = days + "<br> <span class=\"small\"> days </span>";
+        hoursElement.innerHTML = hours + "<br> <span class=\"small\"> hours </span>";
+        minutesElement.innerHTML = minutes + "<br> <span class=\"small\"> minutes </span>";
+        secondsElement.innerHTML = seconds + "<br> <span class=\"small\"> seconds </span>";
+    }
+
+    showCountdown();
+    setInterval(showCountdown, 1000); // Update every second
+</script>
+</body>
+</html>
