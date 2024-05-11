@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
-    <title>Time Left in this Year</title>
+    <title>Countdown to Next Year</title>
     <style>
         body{
             text-align: center;
@@ -42,39 +42,42 @@
 </head>
 <body>
     <div id="counter">
-        <h2 class="box" id="months"></h2>
         <h2 class="box" id="days"></h2>
+        <h2 class="box" id="hours"></h2>
+        <h2 class="box" id="minutes"></h2>
+        <h2 class="box" id="seconds"></h2>
         <h3>
-            Months and Days <br>Left in this Year
+            Countdown to Next Year
         </h3>
     </div>
 
 <script>
-    function CountMonthsAndDaysLeft() {
-        var monthsElement = document.getElementById("months");
+    function showCountdown() {
         var daysElement = document.getElementById("days");
+        var hoursElement = document.getElementById("hours");
+        var minutesElement = document.getElementById("minutes");
+        var secondsElement = document.getElementById("seconds");
 
         var now = new Date();
-        var month = now.getMonth(); // Current month (0-11)
-        var dayOfMonth = now.getDate(); // Current day of the month
-        var year = now.getFullYear();
+        var currentYear = now.getFullYear();
+        var nextYear = currentYear + 1;
 
-        // Calculate remaining months in the current year
-        var monthsLeft = 12 - month - 1; // Subtracting 1 as we are already in a month
+        var endOfYear = new Date(nextYear, 0, 1); // January 1st of the next year
 
-        // Calculate remaining days in the current year
-        var totalDaysInMonth = new Date(year, month + 1, 0).getDate(); // Total days in the current month
-        var daysLeft = totalDaysInMonth - dayOfMonth;
-        for (var i = month + 1; i < 12; i++) {
-            totalDaysInMonth = new Date(year, i + 1, 0).getDate(); // Total days in the next month
-            daysLeft += totalDaysInMonth;
-        }
+        var timeRemaining = endOfYear - now;
+        var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-        monthsElement.innerHTML = monthsLeft + "<br> <span class=\"small\"> months </span>";
-        daysElement.innerHTML = daysLeft + "<br> <span class=\"small\"> days </span>";
+        daysElement.innerHTML = days + "<br> <span class=\"small\"> days </span>";
+        hoursElement.innerHTML = hours + "<br> <span class=\"small\"> hours </span>";
+        minutesElement.innerHTML = minutes + "<br> <span class=\"small\"> minutes </span>";
+        secondsElement.innerHTML = seconds + "<br> <span class=\"small\"> seconds </span>";
     }
 
-    CountMonthsAndDaysLeft();
+    showCountdown();
+    setInterval(showCountdown, 1000); // Update every second
 </script>
 </body>
 </html>
