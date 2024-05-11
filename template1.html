@@ -6,7 +6,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
     <title>Countdown to Next Year</title>
+    
     <style>
+       
+
         * {
             margin: 0;
             padding: 0;
@@ -25,7 +28,7 @@
             background-color: #292929;
             border-radius: 10px;
             box-shadow: 2px 2px 1px 0px #000000;
-            transition: transform .25s ease-in-out; /* Reduced transition duration for smoother effect */
+            transition: all 0.3s ease; /* Reduced transition duration for smoother effect */
             color: #fff; /* Set text color to white */
         }
 
@@ -61,51 +64,16 @@
             height: auto;
             
         }
-        .embedContainer {
-            color: white;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            height: fit-content;
-            gap: 4%;
-            justify-content: center; /* Center vertically */
-            text-align: center; /* Center horizontally */
-        }
-        .EmbedLeft{
-            min-width: 22.5%;
-            max-width: 22.5%;
-            height: fit-content;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .EmbedMiddle {
-            min-width: 50%;
-            max-width: 50%;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform .25s ease-in-out;
-            
-        }
-        .EmbedRight{
-            min-width: 22.5%;
-            max-width: 22.5%;
-            height: fit-content;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
         .pt{
             padding-top: 5%;
         }
         .wrapper{
-            width: 75%;
+            width: 65%;
             height: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 0;
         }
         .containerTwo{
             height: 400px;
@@ -178,12 +146,65 @@
          transform: translateY(32px) translateX(-502px);
         }
         .holder{
+            
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            gap: 5%;
+            height: 100%;
+            width: 100%;
         }
+        .holder2{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            border-radius: 25px;
+            width: 50%;
+            min-height: 100%;
+            padding: 4px;
+            
+        }
+        .quicklinks{
+            border: 2px solid #2c2c2c;
+            background-color: #131313;
+            border-radius: 25px;
+            display: flex;
+            width: 25%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 400px;
+            transition: all 0.3s ease;
+        }
+        .quicklinks:hover{
+            scale: 1.05;
+        }
+        button{
+            color: white;
+            border: 1.5px solid #000000;
+            background-color: #292929;
+            border-radius: 25px;
+            padding: 8px;
+            cursor:help;
+            scale: 1.3;
+            transition: all 0.3s ease;
+        }
+        button:hover{
+            transform: scale(1.1);
+            border-color: #414141;
+            background-color: #414141;
+            box-shadow: 2px 2px 90px 30px #000000;
+            text-shadow: 0 0 10px #ffffff;
+        }
+        input:checked + label .card {
+    transform: scale(1.1);
+}
 
+        
+        
     </style>
 </head>
 
@@ -236,7 +257,19 @@
     </div>
 
     <div class="holder pt">
-        <div class="container">Hi</div>
+        <div class="quicklinks">
+            
+            <div class="holder2">
+                <h2 class="pb">QuickLinks</h2>
+
+                <a href="https://account.forex.com/"><button>Forex.com</button></a>
+                <a href="https://www.tradingview.com/"><button>TradingView.com</button></a>
+                <a href="https://www.forexfactory.com/"><button>ForexFactory.com</button></a>
+                <a href="https://www.babypips.com/"><button>BabyPips.com</button></a>
+                <a href="https://forex.chasingreturns.com/mt4/login?server=Forex.com-Live%20124"><button>ChasingReturns.com</button></a>
+                
+            </div>
+        </div>
 
         <div class="wrapper"> 
             <div class="containerTwo">
@@ -245,7 +278,7 @@
                     <label for="c1" class="card" >
                         
                         <div class="row">
-                            <div class="icon">1</div>
+                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
                             <div class="description"></div>
                             <h4>GBP/JPY</h4>
                             <p>GBP TO JPY</p>
@@ -283,7 +316,7 @@
                 <input type="radio" name="slide" id="c2" >
                     <label for="c2" class="card">
                         <div class="row">
-                            <div class="icon">2</div>
+                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
                             <div class="description"></div>
                             <h4>EUR/USD</h4>
                             <p>EUR TO USD</p>
@@ -321,7 +354,7 @@
                 <input type="radio" name="slide" id="c3" checked>
                     <label for="c3" class="card">
                         <div class="row">
-                            <div class="icon">3</div>
+                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
                             <div class="description"></div>
                             <h4>GBP/JPY</h4>
                             <p>GBP TO JPY</p>
