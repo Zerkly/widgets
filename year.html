@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
-    <title>Days and Months in this Year</title>
+    <title>Time Left in this Year</title>
+<h1>Updated</h1>
     <style>
         body{
             text-align: center;
@@ -45,38 +46,30 @@
         <h2 class="box" id="days"></h2>
         <h2 class="box" id="months"></h2>
         <h3>
-            Days and Months <br>in this Year
+            Days and Months <br>Left in this Year
         </h3>
     </div>
 
 <script>
-    function CountDaysAndMonths() {
+    function CountDaysAndMonthsLeft() {
         var daysElement = document.getElementById("days");
         var monthsElement = document.getElementById("months");
 
         var now = new Date();
         var year = now.getFullYear();
 
-        // Leap year calculation
-        var daysInFebruary = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
+        // Calculate remaining days in the current year
+        var totalDays = new Date(year, 11, 31).getTime() - now.getTime();
+        var daysLeft = Math.floor(totalDays / (1000 * 60 * 60 * 24));
 
-        // Define days in each month
-        var daysInMonth = [31, daysInFebruary, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        var totalDays = 0;
+        // Calculate remaining months in the current year
+        var monthsLeft = 12 - (now.getMonth() + 1);
 
-        // Calculate total days in the year
-        for (var i = 0; i < daysInMonth.length; i++) {
-            totalDays += daysInMonth[i];
-        }
-
-        // Calculate total months in the year
-        var totalMonths = daysInMonth.length;
-
-        daysElement.innerHTML = totalDays + "<br> <span class=\"small\"> days </span>";
-        monthsElement.innerHTML = totalMonths + "<br> <span class=\"small\"> months </span>";
+        daysElement.innerHTML = daysLeft + "<br> <span class=\"small\"> days </span>";
+        monthsElement.innerHTML = monthsLeft + "<br> <span class=\"small\"> months </span>";
     }
 
-    CountDaysAndMonths();
+    CountDaysAndMonthsLeft();
 </script>
 </body>
 </html>
