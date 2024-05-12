@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+</head>
+
+<style>
+    *{
+        background: transparent;
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        min-height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .holder{
+        width: 400px;
+        height: 500px;
+        display: flex;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+    .EmbedHolder{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: 100px;
+        overflow: hidden;
+        transform: translateX(-78px) translateY(-450px);
+
+    }
+    .wrapper{
+            width: 65%;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        .containerTwo{
+            height: 550px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: start;
+        }
+        .card{
+            width: 100px;
+            border-radius: .75rem;
+            background-size: cover;         
+            overflow: hidden;
+            border-radius: 2rem;
+            margin: 0 10px;
+            display: flex;
+            justify-content: start;
+            align-items: flex-end;
+            transition: .6s cubic-bezier(.28,-0.03,0,.99);
+            box-shadow: 0px 10px 30px -5px #000000;
+            background: #191919;
+        }
+
+        .card > .row {
+            color: white;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        .card > .row  > .icon {
+            background: #223;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px;
+            border-radius: 100%;
+            z-index: 10;
+            transform: translateX(10px);
+        }
+        input {
+            display: none;
+        }
+        input:checked + label {
+            width: 400px;
+            height: auto;
+        }
+        input:checked + label .icon {
+            visibility: hidden;
+        }
+        .PrimaryEmbed{
+            min-width: 300px;
+            transform: translateX(-88px) translateY(-20px);
+        }
+</style>
+<body>
+
+
+<div class="wrapper"> 
+    <div class="containerTwo">
+        <input type="radio" name="slide" id="c1" checked>
+            <label for="c1" class="card">
+                <div class="row">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
+                    <div class="EmbedHolder"><iframe src="https://chartbase.so/embed/7e1a26d4-b64e-4d6e-8dec-fb7fcf59ea4c" width="100%" height="500px" frameborder="0" allowfullscreen></iframe></div>
+                </div>
+                <div class="PrimaryEmbed"><iframe src="https://chartbase.so/embed/a154c689-7e79-4b21-92a1-6414ae2ae259" width="100%" height="500px" frameborder="0" allowfullscreen></iframe></div>
+                
+            </label>
+        </input>
+
+        <input type="radio" name="slide" id="c2" checked>
+            <label for="c2" class="card">
+                <div class="row">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
+                    <div class="EmbedHolder"><iframe src="https://chartbase.so/embed/e3a32661-4241-4803-8d93-1db7d79a465d" width="100%" height="500px" frameborder="0" allowfullscreen></iframe></div>
+                </div>
+                <div class="PrimaryEmbed"><iframe src="https://chartbase.so/embed/a8fb0715-acd0-497c-aa32-a111772f347e" width="100%" height="500px" frameborder="0" allowfullscreen></iframe></div>
+                
+            </label>
+        </input>
+
+        <input type="radio" name="slide" id="c3" checked>
+            <label for="c3" class="card">
+                <div class="row">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
+                    <div class="EmbedHolder"><iframe src="https://chartbase.so/embed/a60329cc-8aa2-483e-8b54-5682f7bb6446" width="100%" height="500px" frameborder="0" allowfullscreen></iframe></div>
+                </div>
+                <div class="PrimaryEmbed"><iframe src="https://chartbase.so/embed/b4ba9c38-0dc1-475f-9b0f-3acaa371a70f" width="100%" height="500px" frameborder="0" allowfullscreen></iframe></div>
+                
+            </label>
+        </input>
+    </div>
+</div>
+</div>
+</body>
+</html>
