@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
-
-    <title>Countdown to Next Year</title>
     
     <style>
        
@@ -24,10 +22,7 @@
             padding: 10px;
             min-width: 40px;
             height: 40px;
-            border: 3px solid #000000;
-            background-color: #292929;
             border-radius: 10px;
-            box-shadow: 2px 2px 1px 0px #000000;
             transition: all 0.3s ease; /* Reduced transition duration for smoother effect */
             color: #fff; /* Set text color to white */
         }
@@ -36,11 +31,9 @@
            transform: scale(1.1);
             border-color: #414141;
             background-color: #414141;
-            box-shadow: 2px 2px 90px 30px #000000;
+            box-shadow: 2px 2px 50px 5px #41414150;
             text-shadow: 0 0 10px #ffffff; /* Horizontal offset, vertical offset, blur radius, and color */
         }
-
-
         h2{
             display: inline-block;
             margin-right: 10px;
@@ -61,22 +54,23 @@
             border-radius: 25px;
             background-color: #131313;
             overflow: hidden;
-            height: auto;
+            height: 90vh;
             
         }
         .pt{
-            padding-top: 5%;
+            padding-top: 2.5%;
         }
         .wrapper{
-            width: 65%;
-            height: 450px;
+            width: 70%;
+            height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0;
         }
         .containerTwo{
-            height: 400px;
+            width: 100%;
+            height: 550px;
             display: flex;
             flex-wrap: nowrap;
             justify-content: start;
@@ -85,8 +79,6 @@
             width: 80px;
             border-radius: .75rem;
             background-size: cover;
-
-            
             overflow: hidden;
 
             
@@ -134,24 +126,20 @@
             display: none;
         }
         input:checked + label {
-            width: 600px;
-        }
-        input:checked .card{
-            scale: 1.1;
+            width: 100%;
+            border-radius: 0.7rem;
         }
         .sitback{
          position: relative;
-         height: 108%;
+         height: 106%;
          min-width: 100%;
          transform: translateY(32px) translateX(-502px);
         }
         .holder{
-            
             display: flex;
             flex-direction: row;
             justify-content: center;
-            align-items: center;
-            gap: 5%;
+            gap:2.2rem;
             height: 100%;
             width: 100%;
         }
@@ -160,48 +148,136 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
             border-radius: 25px;
-            width: 50%;
+            width: 100%;
             min-height: 100%;
             padding: 4px;
             
         }
         .quicklinks{
-            border: 2px solid #2c2c2c;
             background-color: #131313;
             border-radius: 25px;
             display: flex;
-            width: 25%;
+            width: 100%;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            height: 400px;
-            transition: all 0.3s ease;
+            height: 50px;
+            overflow: hidden;
+            transition: all 1s ease;
+            margin-top: 1%;
         }
-        .quicklinks:hover{
-            scale: 1.05;
+        .quicklinks:hover {
+            height: 550px;
+            
+        }
+        .quicklinks h2 {
+            transform:translateY(80px);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: underline;
+            text-decoration-color: green;
+        }
+        .quicklinks:hover h2{
+            transform: translateY(0px);
+            text-decoration:overline;
+        }
+        .quicklinks:hover .linkHolder {
+            scale: 1;
+        }
+        .linkHolder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         button{
             color: white;
-            border: 1.5px solid #000000;
-            background-color: #292929;
-            border-radius: 25px;
-            padding: 8px;
+            border: 0px none;
+            background-color: #29292900;
+            border-radius: 0;
+            width: 10vw;
+            padding: 4px;
+            margin: 4px;
             cursor:help;
             scale: 1.3;
             transition: all 0.3s ease;
         }
         button:hover{
-            transform: scale(1.1);
-            border-color: #414141;
             background-color: #414141;
-            box-shadow: 2px 2px 90px 30px #000000;
-            text-shadow: 0 0 10px #ffffff;
+            box-shadow: 2px 2px 50px 5px #41414150;
+            background-color: #292929;
+            text-shadow: 0 0 10px #ffffff9a;
         }
-        input:checked + label .card {
-    transform: scale(1.1);
-}
+        .linkHolder {
+            display: flex;
+            flex-direction: column;
+            scale: 0;
+            transition: all 0.3s ease;
+        }
+        input:checked + label .icon {
+            visibility: hidden;
+        }
+        .anyalistHolder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            height: 520px;
+            width: 100%;
+            overflow: visible;
+            transition: all 1s ease;
+        }
+        .colHolder {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 120px;
+            width: 100%;
+            gap: 5px;
+        }
+        .quicklinks:hover + .anyalistHolder .embedHolder1 iframe{
+            scale: 0;
+        }
+        .embedHolder1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s ease;
+            z-index: 0;
+        }
+        .embedHolder1 iframe {
+            transition: all 0.3s ease;
+        }
+        .embedHolder2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s ease;
+            z-index: 0;
+        }
+        
+        .embedHolder1:hover {
+            box-shadow: 2px 2px 50px 5px #41414150;
+            border-radius: 25px;
+            z-index: 10;
+        }
+        .embedHolder1:hover iframe {
+            scale: 1.25;
+            transition: all 0.3s ease;
+        }
+        .sizer {
+            width: 25%;
+        }
 
         
         
@@ -248,26 +324,96 @@
     <h3 class="pt">
             Countdown to Next Year
     </h3>
-    <div id="counter">
+    <div>
+        <div id="counter" class="counter">
         <h2 class="box" id="months"></h2>
         <h2 class="box" id="days"></h2>
         <h2 class="box" id="hours"></h2>
         <h2 class="box" id="minutes"></h2>
         <h2 class="box" id="seconds"></h2>
+        </div>
     </div>
+    
 
     <div class="holder pt">
-        <div class="quicklinks">
-            
-            <div class="holder2">
-                <h2 class="pb">QuickLinks</h2>
+        <div class="sizer">
+            <div class="quicklinks">
 
-                <a href="https://account.forex.com/"><button>Forex.com</button></a>
-                <a href="https://www.tradingview.com/"><button>TradingView.com</button></a>
-                <a href="https://www.forexfactory.com/"><button>ForexFactory.com</button></a>
-                <a href="https://www.babypips.com/"><button>BabyPips.com</button></a>
-                <a href="https://forex.chasingreturns.com/mt4/login?server=Forex.com-Live%20124"><button>ChasingReturns.com</button></a>
+                <div class="holder2">
+                    <h2 class="pb">QuickLinks</h2>
+                    <div class="linkHolder">
+                        <a href="https://account.forex.com/"><button>Forex.com</button></a>
+                        <a href="https://www.tradingview.com/"><button>TradingView.com</button></a>
+                        <a href="https://www.forexfactory.com/"><button>ForexFactory.com</button></a>
+                        <a href="https://www.babypips.com/"><button>BabyPips.com</button></a>
+                        <a href="https://forex.chasingreturns.com/mt4/login?server=Forex.com-Live%20124"><button>ChasingReturns.com</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="anyalistHolder">
                 
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/7d19234a-f151-40dd-b22a-9152a3551eed" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/b4ee3d44-7b0a-42b0-8d40-866282dc0cd5" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/0d687482-8902-40f0-8334-7f7d94a5d6f9" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/e6cf7456-c22c-4fc5-b991-545ca0217391" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+
+                <div class="colHolder">
+                    <div class="embedHolder2">
+                      <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+    {
+    "symbol": "FX:EURUSD",
+    "width": "100%",
+    "isTransparent": true,
+    "colorTheme": "dark",
+    "locale": "en",
+    "largeChartUrl": ""
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+                    </div>
+
+                    <div class="embedHolder2">
+                        <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+    {
+    "symbol": "FOREXCOM:GBPJPY",
+    "width": "100%",
+    "isTransparent": true,
+    "colorTheme": "dark",
+    "locale": "en",
+    "largeChartUrl": ""
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
@@ -313,7 +459,7 @@
                     </label>
                 </input>
     
-                <input type="radio" name="slide" id="c2" >
+                <input type="radio" name="slide" id="c2" checked>
                     <label for="c2" class="card">
                         <div class="row">
                             <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
@@ -351,7 +497,7 @@
                     </label>
                 </input>
     
-                <input type="radio" name="slide" id="c3" checked>
+                <input type="radio" name="slide" id="c3">
                     <label for="c3" class="card">
                         <div class="row">
                             <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
@@ -390,6 +536,7 @@
                 </input>
             </div>
         </div>
+         
     </div>
     
 </div>
@@ -407,9 +554,16 @@
 
         var endOfYear = new Date(nextYear, 0, 1); // January 1st of the next year
 
-        var timeRemaining = endOfYear - now;
+        // Calculate months left in the year
         var months = Math.max(0, 11 - now.getMonth());
-        var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+
+        // Calculate days left in the current month
+        var today = now.getDate(); // Get the current day of the month
+        var daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate(); // Get the total days in the current month
+        var days = daysInMonth - today + 1; // Calculate days remaining in the current month
+
+        // Calculate remaining time within the current day
+        var timeRemaining = endOfYear - now;
         var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
@@ -424,5 +578,7 @@
     showCountdown();
     setInterval(showCountdown, 1000); // Update every second
 </script>
+
+
 </body>
 </html>
