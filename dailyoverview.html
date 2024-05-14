@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    
+    <style>
+       
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            text-align: center;
+            font-family: monospace;
+            background-color: #13131300;
+        }
+        .box {
+            display: inline-block;
+            padding: 10px;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            transition: all 0.3s ease; /* Reduced transition duration for smoother effect */
+            color: #fff; /* Set text color to white */
+        }
+
+        .box:hover {
+           transform: scale(1.1);
+            border-color: #414141;
+            background-color: #414141;
+            box-shadow: 2px 2px 50px 5px #41414150;
+            text-shadow: 0 0 10px #ffffff; /* Horizontal offset, vertical offset, blur radius, and color */
+        }
+        h2{
+            display: inline-block;
+            margin-right: 10px;
+            margin-block-start: 5px;
+            color: #fff;
+        }
+        h3{
+            text-align: left;
+            display: inline-block;
+            color: white;
+            font-weight: bold;
+        }
+        .small{
+            font-size: 15px;
+            font-weight: lighter;
+        }
+        .container{
+            border-radius: 25px;
+            background-color: #131313;
+            overflow: hidden;
+            height: 90vh;
+            
+        }
+        .pt{
+            padding-top: 2.5%;
+        }
+        .wrapper{
+            width: 70%;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        .containerTwo{
+            width: 100%;
+            height: 550px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: start;
+        }
+        .card{
+            width: 80px;
+            border-radius: .75rem;
+            background-size: cover;
+            overflow: hidden;
+
+            
+            border-radius: 2rem;
+            margin: 0 10px;
+            display: flex;
+            align-items: flex-end;
+            transition: .6s cubic-bezier(.28,-0.03,0,.99);
+            box-shadow: 0px 10px 30px -5px #000000;
+        }
+
+        .card > .row {
+            color: white;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        .card > .row  > .icon {
+            background: #223;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px;
+            border-radius: 100%;
+            z-index: 10;
+        }
+        .card > .row > .description {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+            height: 80px;
+            width: 350px;
+            opacity: 0;
+            transform: translateY(px);
+            transition-delay: .3s;
+            transition: all .3s ease;
+        }
+        .description p {
+            color: #b0b0ba;
+        }
+        input {
+            display: none;
+        }
+        input:checked + label {
+            width: 100%;
+            border-radius: 0.7rem;
+        }
+        .sitback{
+         position: relative;
+         height: 106%;
+         min-width: 100%;
+         transform: translateY(32px) translateX(-502px);
+        }
+        .holder{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap:2.2rem;
+            height: 100%;
+            width: 100%;
+        }
+        .holder2{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            border-radius: 25px;
+            width: 100%;
+            min-height: 100%;
+            padding: 4px;
+            
+        }
+        .quicklinks{
+            background-color: #131313;
+            border-radius: 25px;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 50px;
+            overflow: hidden;
+            transition: all 1s ease;
+            margin-top: 1%;
+        }
+        .quicklinks:hover {
+            height: 550px;
+            
+        }
+        .quicklinks h2 {
+            transform:translateY(80px);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: underline;
+            text-decoration-color: green;
+        }
+        .quicklinks:hover h2{
+            transform: translateY(0px);
+            text-decoration:overline;
+        }
+        .quicklinks:hover .linkHolder {
+            scale: 1;
+        }
+        .linkHolder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        button{
+            color: white;
+            border: 0px none;
+            background-color: #29292900;
+            border-radius: 0;
+            width: 10vw;
+            padding: 4px;
+            margin: 4px;
+            cursor:help;
+            scale: 1.3;
+            transition: all 0.3s ease;
+        }
+        button:hover{
+            background-color: #414141;
+            box-shadow: 2px 2px 50px 5px #41414150;
+            background-color: #292929;
+            text-shadow: 0 0 10px #ffffff9a;
+        }
+        .linkHolder {
+            display: flex;
+            flex-direction: column;
+            scale: 0;
+            transition: all 0.3s ease;
+        }
+        input:checked + label .icon {
+            visibility: hidden;
+        }
+        .anyalistHolder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            height: 520px;
+            width: 100%;
+            overflow: visible;
+            transition: all 1s ease;
+        }
+        .colHolder {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 120px;
+            width: 100%;
+            gap: 5px;
+        }
+        .quicklinks:hover + .anyalistHolder .embedHolder1 iframe{
+            scale: 0;
+        }
+        .embedHolder1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s ease;
+            z-index: 0;
+        }
+        .embedHolder1 iframe {
+            transition: all 0.3s ease;
+        }
+        .embedHolder2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s ease;
+            z-index: 0;
+        }
+        
+        .embedHolder1:hover {
+            box-shadow: 2px 2px 50px 5px #41414150;
+            border-radius: 25px;
+            z-index: 10;
+        }
+        .embedHolder1:hover iframe {
+            scale: 1.25;
+            transition: all 0.3s ease;
+        }
+        .sizer {
+            width: 25%;
+        }
+
+        
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header><!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+             
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+              {
+              "symbols": [
+                {
+                  "proName": "FOREXCOM:SPXUSD",
+                  "title": "S&P 500 Index"
+                },
+                {
+                  "proName": "FOREXCOM:NSXUSD",
+                  "title": "US 100 Cash CFD"
+                },
+                {
+                  "description": "EUR to USD",
+                  "proName": "FOREXCOM:EURUSD"
+                },
+                {
+                  "description": "GBP to USD",
+                  "proName": "FOREXCOM:GBPUSD"
+                }
+              ],
+              "showSymbolLogo": true,
+              "isTransparent": true,
+              "displayMode": "regular",
+              "colorTheme": "dark",
+              "locale": "en"
+            }
+              </script>
+            </div>
+            <!-- TradingView Widget END --></header>
+
+    <h3 class="pt">
+            Countdown to Next Year
+    </h3>
+    <div>
+        <div id="counter" class="counter">
+        <h2 class="box" id="months"></h2>
+        <h2 class="box" id="days"></h2>
+        <h2 class="box" id="hours"></h2>
+        <h2 class="box" id="minutes"></h2>
+        <h2 class="box" id="seconds"></h2>
+        </div>
+    </div>
+    
+
+    <div class="holder pt">
+        <div class="sizer">
+            <div class="quicklinks">
+
+                <div class="holder2">
+                    <h2 class="pb">QuickLinks</h2>
+                    <div class="linkHolder">
+                        <a href="https://account.forex.com/"><button>Forex.com</button></a>
+                        <a href="https://www.tradingview.com/"><button>TradingView.com</button></a>
+                        <a href="https://www.forexfactory.com/"><button>ForexFactory.com</button></a>
+                        <a href="https://www.babypips.com/"><button>BabyPips.com</button></a>
+                        <a href="https://forex.chasingreturns.com/mt4/login?server=Forex.com-Live%20124"><button>ChasingReturns.com</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="anyalistHolder">
+                
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/7d19234a-f151-40dd-b22a-9152a3551eed" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/b4ee3d44-7b0a-42b0-8d40-866282dc0cd5" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/0d687482-8902-40f0-8334-7f7d94a5d6f9" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/e6cf7456-c22c-4fc5-b991-545ca0217391" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+
+                <div class="colHolder">
+                    <div class="embedHolder2">
+                      <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+    {
+    "symbol": "FX:EURUSD",
+    "width": "100%",
+    "isTransparent": true,
+    "colorTheme": "dark",
+    "locale": "en",
+    "largeChartUrl": ""
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+                    </div>
+
+                    <div class="embedHolder2">
+                        <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+    {
+    "symbol": "FOREXCOM:GBPJPY",
+    "width": "100%",
+    "isTransparent": true,
+    "colorTheme": "dark",
+    "locale": "en",
+    "largeChartUrl": ""
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="wrapper"> 
+            <div class="containerTwo">
+                <input type="radio" name="slide" id="c1" >
+                
+                    <label for="c1" class="card" >
+                        
+                        <div class="row">
+                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
+                            <div class="description"></div>
+                            <h4>GBP/JPY</h4>
+                            <p>GBP TO JPY</p>
+                        </div>
+                        <div class="sitback"><!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container" style="height:100%;width:100%">
+                              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+                              <div class="tradingview-widget-copyright"></div>
+                              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                              {
+                              "autosize": true,
+                              "symbol": "FOREXCOM:EURUSD",
+                              "interval": "1",
+                              "timezone": "Etc/UTC",
+                              "theme": "dark",
+                              "style": "1",
+                              "locale": "en",
+                              "withdateranges": true,
+                              "hide_side_toolbar": false,
+                              "allow_symbol_change": true,
+                              "details": true,
+                              "hotlist": true,
+                              "calendar": false,
+                              "studies": [
+                                "STD;MACD"
+                              ],
+                              "support_host": "https://www.tradingview.com"
+                            }
+                              </script>
+                            </div>
+                            <!-- TradingView Widget END --></div>
+                    </label>
+                </input>
+    
+                <input type="radio" name="slide" id="c2" checked>
+                    <label for="c2" class="card">
+                        <div class="row">
+                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
+                            <div class="description"></div>
+                            <h4>EUR/USD</h4>
+                            <p>EUR TO USD</p>
+                        </div>
+                        <div class="sitback"><!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container" style="height:100%;width:100%">
+                              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+                              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                              {
+                              "autosize": true,
+                              "symbol": "FOREXCOM:GBPJPY",
+                              "interval": "1",
+                              "timezone": "Etc/UTC",
+                              "theme": "dark",
+                              "style": "1",
+                              "locale": "en",
+                              "withdateranges": true,
+                              "hide_side_toolbar": false,
+                              "allow_symbol_change": true,
+                              "details": true,
+                              "hotlist": true,
+                              "calendar": false,
+                              "studies": [
+                                "STD;MACD"
+                              ],
+                              "support_host": "https://www.tradingview.com"
+                            }
+                              </script>
+                            </div>
+                            <!-- TradingView Widget END --></div>
+                    </label>
+                </input>
+    
+                <input type="radio" name="slide" id="c3">
+                    <label for="c3" class="card">
+                        <div class="row">
+                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg></div>
+                            <div class="description"></div>
+                            <h4>GBP/JPY</h4>
+                            <p>GBP TO JPY</p>
+                        </div>
+                        <div class="sitback"><!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                              <div class="tradingview-widget-container__widget"></div>
+                              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
+                              {
+                              "width": "100%",
+                              "height": "100%",
+                              "currencies": [
+                                "EUR",
+                                "USD",
+                                "JPY",
+                                "GBP",
+                                "CHF",
+                                "AUD",
+                                "CAD",
+                                "NZD",
+                                "CNY"
+                              ],
+                              "isTransparent": false,
+                              "colorTheme": "dark",
+                              "locale": "en",
+                              "backgroundColor": "#1D222D"
+                            }
+                              </script>
+                            </div>
+                            <!-- TradingView Widget END --></div>
+                    </label>
+                </input>
+            </div>
+        </div>
+         
+    </div>
+    
+</div>
+<script>
+    function showCountdown() {
+        var monthsElement = document.getElementById("months");
+        var daysElement = document.getElementById("days");
+        var hoursElement = document.getElementById("hours");
+        var minutesElement = document.getElementById("minutes");
+        var secondsElement = document.getElementById("seconds");
+
+        var now = new Date();
+        var currentYear = now.getFullYear();
+        var nextYear = currentYear + 1;
+
+        var endOfYear = new Date(nextYear, 0, 1); // January 1st of the next year
+
+        // Calculate months left in the year
+        var months = Math.max(0, 11 - now.getMonth());
+
+        // Calculate days left in the current month
+        var today = now.getDate(); // Get the current day of the month
+        var daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate(); // Get the total days in the current month
+        var days = daysInMonth - today + 1; // Calculate days remaining in the current month
+
+        // Calculate remaining time within the current day
+        var timeRemaining = endOfYear - now;
+        var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        monthsElement.innerHTML = months + "<br> <span class=\"small\"> months </span>";
+        daysElement.innerHTML = days + "<br> <span class=\"small\"> days </span>";
+        hoursElement.innerHTML = hours + "<br> <span class=\"small\"> hours </span>";
+        minutesElement.innerHTML = minutes + "<br> <span class=\"small\"> minutes </span>";
+        secondsElement.innerHTML = seconds + "<br> <span class=\"small\"> seconds </span>";
+    }
+
+    showCountdown();
+    setInterval(showCountdown, 1000); // Update every second
+</script>
+
+
+</body>
+</html>
