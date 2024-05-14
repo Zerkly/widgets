@@ -54,11 +54,11 @@
             border-radius: 25px;
             background-color: #131313;
             overflow: hidden;
-            height: 90vh;
+            height: 100vh;
             
         }
         .pt{
-            padding-top: 2.5%;
+            margin-top: 2.5%;
         }
         .wrapper{
             width: 70%;
@@ -278,6 +278,21 @@
         .sizer {
             width: 25%;
         }
+        .overviewTag {
+            transition: all 0.3s ease;
+        }
+        .overviewTag:hover {
+            text-shadow: #ffffff 1px 1px 10px;
+            background: red;
+            padding: 10px;
+        }
+        .overviewTagHolder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-height: 2%;
+        }
 
         
         
@@ -320,14 +335,16 @@
               </script>
             </div>
             <!-- TradingView Widget END --></header>
+            <div class="pt overviewTagHolder">
+                <h1 class=" box" style="color: white; font-weight: bolder;">Daily Overview</h1>
+            </div>
+            
 
     <h3 class="pt">
-            Countdown to Next Year
+            Daily Countdown
     </h3>
     <div>
         <div id="counter" class="counter">
-        <h2 class="box" id="months"></h2>
-        <h2 class="box" id="days"></h2>
         <h2 class="box" id="hours"></h2>
         <h2 class="box" id="minutes"></h2>
         <h2 class="box" id="seconds"></h2>
@@ -355,21 +372,31 @@
                 
                 <div class="colHolder">
                     <div class="embedHolder1">
-                        <iframe src="https://chartbase.so/embed/7d19234a-f151-40dd-b22a-9152a3551eed" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://chartbase.so/embed/557ce266-c301-4463-87bd-45881ea505ea" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
                     </div>
 
                     <div class="embedHolder1">
-                        <iframe src="https://chartbase.so/embed/b4ee3d44-7b0a-42b0-8d40-866282dc0cd5" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://chartbase.so/embed/24ec82a7-d19c-42ee-b474-f242ba7bb7cd" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
 
                 <div class="colHolder">
                     <div class="embedHolder1">
-                        <iframe src="https://chartbase.so/embed/0d687482-8902-40f0-8334-7f7d94a5d6f9" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://chartbase.so/embed/9f5068cd-1acc-4387-9e98-81c79d20b5c9" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
                     </div>
 
                     <div class="embedHolder1">
-                        <iframe src="https://chartbase.so/embed/e6cf7456-c22c-4fc5-b991-545ca0217391" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://chartbase.so/embed/e31940af-4c61-40a4-96e6-7a9de021a6cb" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/1790b19b-4d87-426a-b623-69784d28d452" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/e60fd7a3-8e1c-4423-9e01-914b112f2e34" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
 
@@ -542,34 +569,21 @@
 </div>
 <script>
     function showCountdown() {
-        var monthsElement = document.getElementById("months");
-        var daysElement = document.getElementById("days");
         var hoursElement = document.getElementById("hours");
         var minutesElement = document.getElementById("minutes");
         var secondsElement = document.getElementById("seconds");
 
         var now = new Date();
-        var currentYear = now.getFullYear();
-        var nextYear = currentYear + 1;
 
-        var endOfYear = new Date(nextYear, 0, 1); // January 1st of the next year
+        // Set the target time to midnight (start of the next day)
+        var endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 
-        // Calculate months left in the year
-        var months = Math.max(0, 11 - now.getMonth());
-
-        // Calculate days left in the current month
-        var today = now.getDate(); // Get the current day of the month
-        var daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate(); // Get the total days in the current month
-        var days = daysInMonth - today + 1; // Calculate days remaining in the current month
-
-        // Calculate remaining time within the current day
-        var timeRemaining = endOfYear - now;
+        // Calculate the remaining time until the end of the day
+        var timeRemaining = endOfDay - now;
         var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-        monthsElement.innerHTML = months + "<br> <span class=\"small\"> months </span>";
-        daysElement.innerHTML = days + "<br> <span class=\"small\"> days </span>";
         hoursElement.innerHTML = hours + "<br> <span class=\"small\"> hours </span>";
         minutesElement.innerHTML = minutes + "<br> <span class=\"small\"> minutes </span>";
         secondsElement.innerHTML = seconds + "<br> <span class=\"small\"> seconds </span>";
@@ -578,6 +592,7 @@
     showCountdown();
     setInterval(showCountdown, 1000); // Update every second
 </script>
+
 
 
 </body>
