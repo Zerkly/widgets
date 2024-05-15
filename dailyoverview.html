@@ -58,6 +58,7 @@
     overflow: hidden;
     height: 90vh;
     display: none; /* Initially hide all pages */
+    transition: all 0.3s ease;
 }
 
 
@@ -77,12 +78,28 @@
         .page2 .wrapper, .page3 .wrapper{
             width: 70%;
             height: 70%;
+            overflow: hidden;
             display: flex;
             align-items: center;
             background: #131313;
             box-shadow: 0px 10px 30px -5px #000000;
             border-radius: 2rem;
             padding: 0;
+            z-index: 20;
+            transition: all 0.3s ease;
+            
+        }
+        .wrapperFit{
+            width: 100%;
+            height: 100%;
+        }
+        #Empty1, #dailyTradePage, #dailyWinPage, #dailyPLPage, #dailyLosesPage, #dailyPurchasedPage, #dailyWinLosePage {
+            display: none;
+        }
+        .flexCenter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .page1 .containerTwo{
             width: 100%;
@@ -97,6 +114,7 @@
             display: flex;
             flex-wrap: nowrap;
             justify-content: start;
+            transition: all 0.3s ease;
         }
         .card{
             width: 80px;
@@ -146,7 +164,7 @@
         input {
             display: none;
         }
-        .wrapper input:checked + label {
+        .page1 .wrapper input:checked + label {
             width: 100%;
             border-radius: 0.7rem;
         }
@@ -250,6 +268,7 @@
             width: 100%;
             overflow: visible;
             transition: all 1s ease;
+            
         }
         .colHolder {
             display: flex;
@@ -260,7 +279,8 @@
             width: 100%;
             gap: 5px;
         }
-        .quicklinks:hover + .anyalistHolder .embedHolder1 iframe{
+        
+        .quicklinks:hover + .anyalistHolder .embedHolder1{
             scale: 0;
         }
         .embedHolder1 {
@@ -273,8 +293,11 @@
             transition: all 0.3s ease;
             z-index: 0;
         }
-        .embedHolder1 iframe {
+        .page1 .embedHolder1 iframe {
             transition: all 0.3s ease;
+        }
+        .page2 .embedHolder1 iframe, .page3 .embedHolder1 iframe {
+            pointer-events: none;
         }
         .embedHolder2{
             display: flex;
@@ -288,12 +311,14 @@
         }
         
         .embedHolder1:hover {
-            box-shadow: 2px 2px 50px 5px #41414150;
             border-radius: 25px;
             z-index: 10;
+            transition: all 0.3s ease;
+            border-color: #414141;
+            box-shadow: 0px 10px 30px -5px #000000;
         }
-        .embedHolder1:hover iframe {
-            scale: 1.25;
+        .embedHolder1:hover iframe{
+            scale: 1.1;
             transition: all 0.3s ease;
         }
         .sizer {
@@ -385,10 +410,15 @@
         min-height: 5%;
         overflow: visible;
     }
+    #selected {
+            border-radius: 25px;
+            z-index: 15;
+            transition: all 0.3s ease;
+            border-color: #414141;
+            box-shadow: 0px 10px 30px -5px #000000;
+            text-shadow: 0 0 10px #ffffff; /* Horizontal offset, vertical offset, blur radius, and color */
+        }
 
-    /*Page Toggle*/
-    
-        
         
     </style>
 </head>
@@ -693,33 +723,66 @@
 
             <div class="anyalistHolder">
                 
+                
+
                 <div class="colHolder">
                     <div class="embedHolder1">
-                        <iframe src="https://chartbase.so/embed/557ce266-c301-4463-87bd-45881ea505ea" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                        <input type="radio" name="tabSelector1" id="dailyTradeToggle">
+                            <label for="dailyTradeToggle">
+                                <iframe src="https://chartbase.so/embed/557ce266-c301-4463-87bd-45881ea505ea" width="100%" height="500px" frameborder="0" allowfullscreen>
+                                    <div class="iframeOverlay">
+                                    </div>
+                                </iframe>
+                            </label>
+                        </input>
                     </div>
 
                     <div class="embedHolder1">
-                        <iframe src="https://chartbase.so/embed/24ec82a7-d19c-42ee-b474-f242ba7bb7cd" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                        <input type="radio" name="tabSelector1" id="dailyWinToggle">
+                            <label for="dailyWinToggle">
+                                <iframe src="https://chartbase.so/embed/24ec82a7-d19c-42ee-b474-f242ba7bb7cd" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                            </label>
+                        </input>
                     </div>
                 </div>
 
                 <div class="colHolder">
                     <div class="embedHolder1">
-                        <iframe src="https://chartbase.so/embed/9f5068cd-1acc-4387-9e98-81c79d20b5c9" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                        <input type="radio" name="tabSelector1" id="dailyPLToggle">
+                            <label for="dailyPLToggle">
+                                <iframe src="https://chartbase.so/embed/9f5068cd-1acc-4387-9e98-81c79d20b5c9" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                            </label>
+                        </input>
+                        
                     </div>
 
                     <div class="embedHolder1">
-                        <iframe src="https://chartbase.so/embed/e31940af-4c61-40a4-96e6-7a9de021a6cb" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                        <input type="radio" name="tabSelector1" id="dailyLosesToggle">
+                            <label for="dailyLosesToggle">
+                                <iframe src="https://chartbase.so/embed/e31940af-4c61-40a4-96e6-7a9de021a6cb" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                            </label>
+                        </input>
+                        
                     </div>
                 </div>
 
                 <div class="colHolder">
                     <div class="embedHolder1">
-                        <iframe src="https://chartbase.so/embed/1790b19b-4d87-426a-b623-69784d28d452" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                        <input type="radio" name="tabSelector1" id="dailyPurchasedToggle">
+                            <label for="dailyPurchasedToggle">
+                                <iframe src="https://chartbase.so/embed/1790b19b-4d87-426a-b623-69784d28d452" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                            </label>
+                        </input>
+                        
                     </div>
 
                     <div class="embedHolder1">
-                        <iframe src="https://chartbase.so/embed/e60fd7a3-8e1c-4423-9e01-914b112f2e34" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                        <input type="radio" name="tabSelector1" id="dailyWinLoseToggle">
+                            <label for="dailyWinLoseToggle">
+                                <iframe src="https://chartbase.so/embed/e60fd7a3-8e1c-4423-9e01-914b112f2e34" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                            </label>
+                        </input>
+                        
                     </div>
                 </div>
 
@@ -768,7 +831,48 @@
         </div>
 
         <div class="wrapper"> 
-           
+            
+
+                <div class="wrapperFit flexCenter Empty1" id="Empty1">
+                    <h2 style="color: white;">Please Select A View Under QuickLinks</h2> 
+                </div>
+
+                <div class="wrapperFit flexCenter dailyWinPage" id="dailyTradePage">
+                    <h2 style="color: white;">dailyTradePage</h2>
+                </div>
+
+
+                <div class="wrapperFit flexCenter dailyWinPage" id="dailyWinPage">
+                    <h2 style="color: white;">dailyWinPage</h2>
+                </div>
+
+
+
+                <div class="wrapperFit flexCenter dailyPLPage" id="dailyPLPage">
+                    <h2 style="color: white;">dailyPLPage</h2>
+                </div>
+
+
+
+                <div class="wrapperFit flexCenter dailyLosesPage" id="dailyLosesPage">
+                    <h2 style="color: white;">dailyLosesPage</h2>
+                </div>
+
+
+
+                <div class="wrapperFit flexCenter dailyPurchasedPage" id="dailyPurchasedPage">
+                    <h2 style="color: white;">dailyPurchasedPage</h2>
+                </div>
+
+
+
+                <div class="wrapperFit flexCenter dailyWinLosePage" id="dailyWinLosePage">
+                    <h2 style="color: white;">dailyWinLosePage</h2>
+                </div>
+
+
+
+            
         </div>
          
     </div>
@@ -884,7 +988,10 @@
         </div>
 
         <div class="wrapper"> 
-            
+
+            <div class="wrapperFit flexCenter" id="Empty2">
+                <h2 style="color: white;">Please Select A View Under QuickLinks</h2>
+            </div>
         </div>
          
     </div>
@@ -927,6 +1034,66 @@
 
     
     
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const radioInputs = document.querySelectorAll('input[name="tabSelector1"]');
+            const pages = document.querySelectorAll('.wrapper .wrapperFit');
+    
+            // Function to show the selected page
+            function showSelectedPage() {
+                // Hide all pages initially
+                pages.forEach(function(page) {
+                    page.style.display = "none";
+                });
+    
+                // Find the checked input
+                let checkedInput = null;
+                radioInputs.forEach(function(input) {
+                    if (input.checked) {
+                        checkedInput = input;
+                    }
+                });
+    
+                // If no input is checked, show the empty page
+                if (!checkedInput) {
+                    document.getElementById('Empty1').style.display = "flex";
+                    return;
+                }
+    
+                // Show the corresponding page
+                const pageId = checkedInput.id.replace('Toggle', 'Page');
+                const page = document.getElementById(pageId);
+                if (page) {
+                    page.style.display = "flex";
+                }
+            }
+    
+            // Function to update the selected embed holder
+            function updateSelectedEmbedHolder() {
+                radioInputs.forEach(function(radio) {
+                    const embedHolder = radio.parentElement;
+                    if (radio.checked) {
+                        embedHolder.id = 'selected'; // Add id 'selected' to the selected embedHolder
+                    } else {
+                        embedHolder.removeAttribute('id'); // Remove id if radio is not checked
+                    }
+                });
+            }
+    
+            updateSelectedEmbedHolder(); // Initial update
+    
+            // Show the selected page on initial load
+            showSelectedPage();
+    
+            // Add event listeners to radio inputs for change
+            radioInputs.forEach(function(input) {
+                input.addEventListener("change", function() {
+                    showSelectedPage();
+                    updateSelectedEmbedHolder(); // Update the selected embed holder
+                });
+            });
+        });
+    </script>
     
     
 
