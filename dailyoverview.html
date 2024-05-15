@@ -50,17 +50,23 @@
             font-size: 15px;
             font-weight: lighter;
         }
-        .container{
-            border-radius: 25px;
-            background-color: #131313;
-            overflow: hidden;
-            height: 90vh;
-            
-        }
+
+
+        .page1, .page2, .page3 {
+    border-radius: 25px;
+    background-color: #131313;
+    overflow: hidden;
+    height: 90vh;
+    display: none; /* Initially hide all pages */
+}
+
+
+
+
         .pt{
             margin-top: 2.5%;
         }
-        .wrapper{
+        .page1 .wrapper{
             width: 70%;
             height: 600px;
             display: flex;
@@ -68,9 +74,26 @@
             justify-content: center;
             padding: 0;
         }
-        .containerTwo{
+        .page2 .wrapper, .page3 .wrapper{
+            width: 70%;
+            height: 70%;
+            display: flex;
+            align-items: center;
+            background: #131313;
+            box-shadow: 0px 10px 30px -5px #000000;
+            border-radius: 2rem;
+            padding: 0;
+        }
+        .page1 .containerTwo{
             width: 100%;
             height: 550px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: start;
+        }
+        .page2 .containerTwo, .page3 .containerTwo{
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-wrap: nowrap;
             justify-content: start;
@@ -80,8 +103,6 @@
             border-radius: .75rem;
             background-size: cover;
             overflow: hidden;
-
-            
             border-radius: 2rem;
             margin: 0 10px;
             display: flex;
@@ -125,7 +146,7 @@
         input {
             display: none;
         }
-        input:checked + label {
+        .wrapper input:checked + label {
             width: 100%;
             border-radius: 0.7rem;
         }
@@ -216,7 +237,7 @@
             scale: 0;
             transition: all 0.3s ease;
         }
-        input:checked + label .icon {
+        .wrapper input:checked + label .icon {
             visibility: hidden;
         }
         .anyalistHolder {
@@ -293,7 +314,80 @@
             text-align: center;
             max-height: 2%;
         }
+        .navbarHolder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-2vh);
+    }
 
+    .navbar {
+        background: #131313;
+        width: auto;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+        transition: all 0.3s ease;
+    }
+
+    .navbar:hover {
+        border-color: #414141;
+        box-shadow: 2px 2px 50px 5px #000000;
+        text-shadow: 0 0 10px #ffffff; /* Horizontal offset, vertical offset, blur radius, and color */
+        transition: all 0.3s ease;
+    }
+
+    .navbar svg {
+        stroke: white;
+        transition: all 0.3s ease;
+    }
+
+    .icon2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #131313;
+        border-radius: 150px;
+        padding: 4px;
+        height: 30px;
+        width: 30px;
+        z-index: 10;
+        transition: all 0.3s ease;
+    }
+
+    
+
+    .navIcon:hover .icon2 {
+        box-shadow: 1px 1px 50px 5px blue;
+        z-index: 0;
+    }
+
+    .navIcon:hover svg {
+        stroke: blue;
+        scale: 0.9;
+    }
+
+    /* When the radio input is checked, make the corresponding SVG blue */
+    input[type="radio"]:checked + .navIcon .icon2 svg {
+        stroke: blue;
+    }
+
+
+    .middleIcon {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    header {
+        min-height: 5%;
+        overflow: visible;
+    }
+
+    /*Page Toggle*/
+    
         
         
     </style>
@@ -301,7 +395,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="page1" id="page1">
         <header><!-- TradingView Widget BEGIN -->
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
@@ -342,9 +436,9 @@
     </h3>
     <div>
         <div id="counter" class="counter">
-        <h2 class="box" id="hours"></h2>
-        <h2 class="box" id="minutes"></h2>
-        <h2 class="box" id="seconds"></h2>
+        <h2 class="box" id="hours_page1"></h2>
+        <h2 class="box" id="minutes_page1"></h2>
+        <h2 class="box" id="seconds_page1"></h2>
         </div>
     </div>
     
@@ -443,7 +537,7 @@
 
         <div class="wrapper"> 
             <div class="containerTwo">
-                <input type="radio" name="slide" id="c1" >
+                <input type="radio" name="slide" id="c1">
                 
                     <label for="c1" class="card" >
                         
@@ -563,34 +657,351 @@
          
     </div>
     
-</div>
+    </div>
+
+    <div class="page2" id="page2">
+        
+            
+
+    <h3 class="pt">
+            Daily Countdown
+    </h3>
+    <div>
+        <div id="counter" class="counter">
+        <h2 class="box" id="hours_page2"></h2>
+        <h2 class="box" id="minutes_page2"></h2>
+        <h2 class="box" id="seconds_page2"></h2>
+        </div>
+    </div>
+    
+
+    <div class="holder pt">
+        <div class="sizer">
+            <div class="quicklinks">
+
+                <div class="holder2">
+                    <h2 class="pb">QuickLinks</h2>
+                    <div class="linkHolder">
+                        <a href="https://account.forex.com/"><button>Forex.com</button></a>
+                        <a href="https://www.tradingview.com/"><button>TradingView.com</button></a>
+                        <a href="https://www.forexfactory.com/"><button>ForexFactory.com</button></a>
+                        <a href="https://www.babypips.com/"><button>BabyPips.com</button></a>
+                        <a href="https://forex.chasingreturns.com/mt4/login?server=Forex.com-Live%20124"><button>ChasingReturns.com</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="anyalistHolder">
+                
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/557ce266-c301-4463-87bd-45881ea505ea" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/24ec82a7-d19c-42ee-b474-f242ba7bb7cd" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/9f5068cd-1acc-4387-9e98-81c79d20b5c9" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/e31940af-4c61-40a4-96e6-7a9de021a6cb" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/1790b19b-4d87-426a-b623-69784d28d452" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/e60fd7a3-8e1c-4423-9e01-914b112f2e34" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+
+                <div class="colHolder">
+                    <div class="embedHolder2">
+                      <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+    {
+    "symbol": "FX:EURUSD",
+    "width": "100%",
+    "isTransparent": true,
+    "colorTheme": "dark",
+    "locale": "en",
+    "largeChartUrl": ""
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+                    </div>
+
+                    <div class="embedHolder2">
+                        <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+    {
+    "symbol": "FOREXCOM:GBPJPY",
+    "width": "100%",
+    "isTransparent": true,
+    "colorTheme": "dark",
+    "locale": "en",
+    "largeChartUrl": ""
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="wrapper"> 
+           
+        </div>
+         
+    </div>
+    
+    </div>
+
+    <div class="page3" id="page3">
+        
+            
+
+    <h3 class="pt">
+            Daily Countdown
+    </h3>
+    <div>
+        <div id="counter" class="counter">
+        <h2 class="box" id="hours_page3"></h2>
+        <h2 class="box" id="minutes_page3"></h2>
+        <h2 class="box" id="seconds_page3"></h2>
+        </div>
+    </div>
+    
+
+    <div class="holder pt">
+        <div class="sizer">
+            <div class="quicklinks">
+
+                <div class="holder2">
+                    <h2 class="pb">QuickLinks</h2>
+                    <div class="linkHolder">
+                        <a href="https://account.forex.com/"><button>Forex.com</button></a>
+                        <a href="https://www.tradingview.com/"><button>TradingView.com</button></a>
+                        <a href="https://www.forexfactory.com/"><button>ForexFactory.com</button></a>
+                        <a href="https://www.babypips.com/"><button>BabyPips.com</button></a>
+                        <a href="https://forex.chasingreturns.com/mt4/login?server=Forex.com-Live%20124"><button>ChasingReturns.com</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="anyalistHolder">
+                
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/557ce266-c301-4463-87bd-45881ea505ea" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/24ec82a7-d19c-42ee-b474-f242ba7bb7cd" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/9f5068cd-1acc-4387-9e98-81c79d20b5c9" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/e31940af-4c61-40a4-96e6-7a9de021a6cb" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="colHolder">
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/1790b19b-4d87-426a-b623-69784d28d452" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="embedHolder1">
+                        <iframe src="https://chartbase.so/embed/e60fd7a3-8e1c-4423-9e01-914b112f2e34" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+
+                <div class="colHolder">
+                    <div class="embedHolder2">
+                      <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+    {
+    "symbol": "FX:EURUSD",
+    "width": "100%",
+    "isTransparent": true,
+    "colorTheme": "dark",
+    "locale": "en",
+    "largeChartUrl": ""
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+                    </div>
+
+                    <div class="embedHolder2">
+                        <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+    {
+    "symbol": "FOREXCOM:GBPJPY",
+    "width": "100%",
+    "isTransparent": true,
+    "colorTheme": "dark",
+    "locale": "en",
+    "largeChartUrl": ""
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="wrapper"> 
+            
+        </div>
+         
+    </div>
+    
+    </div>
+
+    
+    <div class="navbarHolder">
+        <div class="navbar">
+            <input type="radio" name="slide2" id="home" checked>
+            <label for="home" class="navIcon">
+                
+                    <div class="icon2">
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-home"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                    </div>
+                    
+                
+            </label>
+             </input>
+    
+            <input type="radio" name="slide2" id="states">
+                        <label for="states" class="navIcon">
+                            <div class="icon2 middleIcon">
+                                <svg id="svg" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chart-line"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 19l16 0" /><path d="M4 15l4 -6l4 2l4 -5l4 4" /></svg>
+                            </div>
+                        </label>
+             </input>
+
+             <input type="radio" name="slide2" id="studies">
+                        <label for="studies" class="navIcon">
+                            <div class="icon2">
+                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"   stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-test-pipe"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 8.04l-12.122 12.124a2.857 2.857 0 1 1 -4.041 -4.04l12.122 -12.124" /><path d="M7 13h8" /><path d="M19 15l1.5 1.6a2 2 0 1 1 -3 0l1.5 -1.6z" /><path d="M15 3l6 6" /></svg>
+                            </div>
+                        </label>
+             </input>
+        </div>
+        
+    </div>
+
+
+    
+    
+    
+    
+
 <script>
-    function showCountdown() {
-        var hoursElement = document.getElementById("hours");
-        var minutesElement = document.getElementById("minutes");
-        var secondsElement = document.getElementById("seconds");
+    document.addEventListener("DOMContentLoaded", function() {
+    const homeRadio = document.getElementById("home");
+    const statesRadio = document.getElementById("states");
+    const studiesRadio = document.getElementById("studies");
 
-        var now = new Date();
-
-        // Set the target time to midnight (start of the next day)
-        var endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-
-        // Calculate the remaining time until the end of the day
-        var timeRemaining = endOfDay - now;
-        var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-        hoursElement.innerHTML = hours + "<br> <span class=\"small\"> hours </span>";
-        minutesElement.innerHTML = minutes + "<br> <span class=\"small\"> minutes </span>";
-        secondsElement.innerHTML = seconds + "<br> <span class=\"small\"> seconds </span>";
+    // Function to show the corresponding page based on the checked radio button
+    function showSelectedPage() {
+        if (homeRadio.checked) {
+            document.querySelector(".page1").style.display = "block";
+            startCountdown("page1");
+        } else if (statesRadio.checked) {
+            document.querySelector(".page2").style.display = "block";
+            startCountdown("page2");
+        } else if (studiesRadio.checked) {
+            document.querySelector(".page3").style.display = "block";
+            startCountdown("page3");
+        }
     }
 
-    showCountdown();
-    setInterval(showCountdown, 1000); // Update every second
+    // Show the selected page when the page loads
+    showSelectedPage();
+
+    // Event listeners for radio button changes
+    homeRadio.addEventListener("change", function() {
+        hideAllPages();
+        document.querySelector(".page1").style.display = "block";
+        startCountdown("page1");
+    });
+
+    statesRadio.addEventListener("change", function() {
+        hideAllPages();
+        document.querySelector(".page2").style.display = "block";
+        startCountdown("page2");
+    });
+
+    studiesRadio.addEventListener("change", function() {
+        hideAllPages();
+        document.querySelector(".page3").style.display = "block";
+        startCountdown("page3");
+    });
+
+    // Function to hide all pages
+    function hideAllPages() {
+        document.querySelectorAll(".page1, .page2, .page3").forEach(function(page) {
+            page.style.display = "none";
+        });
+    }
+
+    // Function to start the countdown for a specific page
+    function startCountdown(pageId) {
+        var hoursElement = document.getElementById("hours_" + pageId);
+        var minutesElement = document.getElementById("minutes_" + pageId);
+        var secondsElement = document.getElementById("seconds_" + pageId);
+
+        var countdownInterval = setInterval(function() {
+            var now = new Date();
+            var endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+            var timeRemaining = endOfDay - now;
+            var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            hoursElement.innerHTML = hours + "<br> <span class=\"small\"> hours </span>";
+            minutesElement.innerHTML = minutes + "<br> <span class=\"small\"> minutes </span>";
+            secondsElement.innerHTML = seconds + "<br> <span class=\"small\"> seconds </span>";
+        }, 1000); // Update every second
+    }
+});
+
+
 </script>
-
-
 
 </body>
 </html>
